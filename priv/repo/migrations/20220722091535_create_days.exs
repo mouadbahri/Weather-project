@@ -3,16 +3,12 @@ defmodule Weather.Repo.Migrations.CreateDays do
 
   def change do
     create table(:days) do
-      add :name, :string
-      add :lat, :integer
-      add :lon, :integer
       add :temp, :integer
-      add :presure, :integer
+      add :pressure, :integer
       add :humidity, :integer
       add :windspeed, :integer
       add :winddeg, :integer
-      add :weather, :string
-      add :weatherid, :integer
+    #  add :description, :string
     end
   end
 end

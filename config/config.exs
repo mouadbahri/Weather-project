@@ -7,3 +7,10 @@ config :weather, Weather.Repo,
   hostname: "localhost"
 
 config :weather, ecto_repos: [Weather.Repo]
+
+config :weather, Oban, testing: :inline,
+  repo: Weather.Repo,
+  plugins: [Oban.Plugins.Pruner],
+  queues: [default: 10]
+
+import_config "#{config_env()}.exs"

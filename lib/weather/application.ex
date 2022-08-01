@@ -9,7 +9,8 @@ defmodule Weather.Application do
   def start(_type, _args) do
     children = [
       Weather.Repo,
-      {Finch, name: Weathermap}
+      {Finch, name: WeatherHTTP},
+      {Oban, Application.fetch_env!(:weather, Oban)}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

@@ -25,7 +25,8 @@ defmodule Weather.MixProject do
       {:ecto_sql, "~> 3.0"},
       {:postgrex, ">= 0.0.0"},
       {:finch, "~> 0.12.0"},
-      {:jason, "~> 1.3"}
+      {:jason, "~> 1.3"},
+      {:oban, "~> 2.13"}
     ]
   end
 end

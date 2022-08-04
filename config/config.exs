@@ -10,7 +10,12 @@ config :weather, ecto_repos: [Weather.Repo]
 
 config :weather, Oban, testing: :inline,
   repo: Weather.Repo,
-  plugins: [Oban.Plugins.Pruner],
+  plugins: [
+    {Oban.Plugins.Cron,
+     crontab: [
+       {"* * * * *", Weather.Get_data}
+     ]}
+  ],
   queues: [default: 10]
 
 import_config "#{config_env()}.exs"

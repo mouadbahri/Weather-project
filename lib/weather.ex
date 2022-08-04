@@ -9,8 +9,10 @@ defmodule Weather do
     # Save the data to the database
   end
 
-  def weather_data(location) do
-    url = "#{get_weather_url()}&q=#{location}"
+
+  def weather_data do
+    #Change location here add this to the fonction name (location) and change &q=London to &q=#{London}
+    url = "#{get_weather_url()}&q=London"
     request = Finch.build(:get, url)
 
     case Finch.request(request, WeatherHTTP) do
@@ -40,11 +42,9 @@ defmodule Weather do
         humidity: record["main"]["humidity"],
         windspeed: record["wind"]["speed"],
         winddeg: record["wind"]["deg"]
-        #id: record["id"]
       }
-
-
     end
+    |> Weather.Repo.insert()
   end
 
 end

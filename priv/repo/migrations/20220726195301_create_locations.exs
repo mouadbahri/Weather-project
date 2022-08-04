@@ -9,6 +9,7 @@ defmodule Weather.Repo.Migrations.CreateLocations do
       add :humidity, :integer
       add :windspeed, :decimal
       add :winddeg, :decimal
+      #add :timestamps, :time
     end
   end
 end

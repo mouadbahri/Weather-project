@@ -3,7 +3,7 @@ defmodule Weather.Workers.WeatherCaller do
 
   @impl Oban.Worker
   def perform(%Oban.Job{}) do
-    Weather.weather_data()
+    Weather.locations()
     :ok
   end
 end

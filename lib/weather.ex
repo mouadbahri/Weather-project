@@ -9,10 +9,15 @@ defmodule Weather do
     # Save the data to the database
   end
 
+  def locations() do
+    Enum.each(["London", "Paris"], fn location ->
+      weather_data(location)
+    end)
+  end
 
-  def weather_data do
-    #Change location here add this to the fonction name (location) and change &q=London to &q=#{London}
-    url = "#{get_weather_url()}&q=London"
+  def weather_data(location) do
+    #Change location here add this to the fonction name (location) and change &q=London to &q=#{location}
+    url = "#{get_weather_url()}&q=#{location}"
     request = Finch.build(:get, url)
 
     case Finch.request(request, WeatherHTTP) do

@@ -8,12 +8,12 @@ config :weather, Weather.Repo,
 
 config :weather, ecto_repos: [Weather.Repo]
 
-config :weather, Oban, testing: :inline,
+config :weather, Oban,
   repo: Weather.Repo,
   plugins: [
     {Oban.Plugins.Cron,
      crontab: [
-       {"* * * * *", Weather.Get_data}
+       {"0 * * * *", Weather.Workers.WeatherCaller}
      ]}
   ],
   queues: [default: 10]

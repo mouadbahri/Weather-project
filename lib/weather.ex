@@ -10,7 +10,9 @@ defmodule Weather do
   end
 
   def locations() do
-    Enum.each(["London", "Paris"], fn location ->
+    list = ["London", "Paris", "Dublin", "Oran"]
+    list
+    |> Enum.each(fn location ->
       weather_data(location)
     end)
   end

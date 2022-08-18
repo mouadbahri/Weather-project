@@ -53,5 +53,4 @@ defmodule Weather do
     end
     |> Weather.Repo.insert()
   end
-
 end

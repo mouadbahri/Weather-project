@@ -1,5 +1,7 @@
 defmodule Weather do
 
+  @repo Weather.Repo
+
   @weather_url "https://api.openweathermap.org/data/2.5/find?units=metric&type=accurate&mode=json"
 
   def get_weather_for_all_cameras() do
@@ -52,5 +54,10 @@ defmodule Weather do
       }
     end
     |> Weather.Repo.insert()
+  end
+
+  def get_by() do
+    Weather
+    |> Repo.get_by()
   end
 end

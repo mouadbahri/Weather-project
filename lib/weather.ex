@@ -63,8 +63,4 @@ defmodule Weather do
     Weather
     |> Repo.get_by(clauses)
   end
-
-  def fields() do
-    __MODULE__.__schema__(:fields)
-  end
 end

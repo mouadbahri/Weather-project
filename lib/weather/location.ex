@@ -16,4 +16,8 @@ defmodule Weather.Location do
     |> Ecto.Changeset.cast(params, [:temp, :pressure, :humidity, :windspeed, :winddeg])
     |> Weather.Repo.insert()
   end
+
+  def fields do
+    __MODULE__.__schema__(:fields)
+  end
 end

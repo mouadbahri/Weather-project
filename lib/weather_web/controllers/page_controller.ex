@@ -8,10 +8,10 @@ defmodule WeatherWeb.PageController do
   def fetch(conn, location) do
     case Weather.get_by(location: location) do
       %Weather.Location{} = locations ->
-        json(conn, Map.take(locations, Weather.fields()))
+        json(conn, Map.take(locations, Weather.Location.fields()))
 
-      # nil ->
-      #   render_error(conn, 404, "Weather not found for  '#{location}'")
+      nil ->
+        IO.puts("Weather not found for  '#{location}'")
     end
   end
 end

@@ -1,6 +1,9 @@
 defmodule Weather do
 
-  @repo Weather.Repo
+  use Ecto.Schema
+
+  alias Weather.Repo
+  alias __MODULE__
 
   @weather_url "https://api.openweathermap.org/data/2.5/find?units=metric&type=accurate&mode=json"
 
@@ -56,8 +59,12 @@ defmodule Weather do
     |> Weather.Repo.insert()
   end
 
-  def get_by() do
+  def get_by(clauses) do
     Weather
-    |> Repo.get_by()
+    |> Repo.get_by(clauses)
+  end
+
+  def fields() do
+    __MODULE__.__schema__(:fields)
   end
 end

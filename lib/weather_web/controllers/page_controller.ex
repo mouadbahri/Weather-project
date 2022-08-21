@@ -5,13 +5,13 @@ defmodule WeatherWeb.PageController do
     render(conn, "index.html")
   end
 
-  def fetch(conn, _params) do
-    case Weather.get_by(location: ) do
+  def fetch(conn, location) do
+    case Weather.get_by(location: location) do
       %Weather.Location{} = locations ->
-        json(conn, Map.take(analytics_parameters, Weather.fields()))
+        json(conn, Map.take(locations, Weather.fields()))
 
-      nil ->
-        render_error(conn, 404, "Weather not found for  '#{location}'")
+      # nil ->
+      #   render_error(conn, 404, "Weather not found for  '#{location}'")
     end
   end
 end

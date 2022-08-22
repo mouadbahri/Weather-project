@@ -5,8 +5,8 @@ defmodule WeatherWeb.PageController do
     render(conn, "index.html")
   end
 
-  def fetch(conn, %{"location" => location}) do
-    case Weather.get_by(location) do
+  def fetch(conn, location) do
+    case Weather.get_by(location: location) do
       %Weather.Location{} = locations ->
         json(conn, Map.take(locations, Weather.Location.fields()))
 

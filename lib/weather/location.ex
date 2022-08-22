@@ -8,7 +8,8 @@ defmodule Weather.Location do
     field :humidity, :integer
     field :windspeed, :decimal
     field :winddeg, :decimal
-    timestamps(type: :utc_datetime, default: DateTime.utc_now())
+
+    timestamps()
   end
 
   def changeset(location, params \\ %{}) do

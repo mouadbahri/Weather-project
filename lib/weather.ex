@@ -59,8 +59,8 @@ defmodule Weather do
     |> Weather.Repo.insert()
   end
 
-  def get_by(london) do
-    Weather
-    |> Repo.get_by(london)
+  def get_by(name) do
+    Weather.Location
+    |> Repo.get_by(name: name)
   end
 end

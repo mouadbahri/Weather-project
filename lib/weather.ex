@@ -2,6 +2,8 @@ defmodule Weather do
 
   use Ecto.Schema
 
+  import Ecto.Query
+
   alias Weather.Repo
   alias Weather.Location
 
@@ -61,8 +63,7 @@ defmodule Weather do
     |> Repo.insert()
   end
 
-  def get_by(name: name) do
-    Location
-    |> Repo.get_by(name)
+  def get_all() do
+    Repo.all(from(Location))
   end
 end

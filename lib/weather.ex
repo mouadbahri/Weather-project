@@ -62,8 +62,4 @@ defmodule Weather do
     end
     |> Repo.insert()
   end
-
-  def get_all() do
-    Repo.all(from(Location))
-  end
 end

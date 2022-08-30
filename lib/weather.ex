@@ -2,8 +2,6 @@ defmodule Weather do
 
   use Ecto.Schema
 
-  import Ecto.Query
-
   alias Weather.Repo
   alias Weather.Location
 

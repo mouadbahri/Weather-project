@@ -1,5 +1,12 @@
 defmodule Weather do
 
+  use Ecto.Schema
+
+  alias Weather.Repo
+  alias Weather.Location
+
+  # alias __MODULE__
+
   @weather_url "https://api.openweathermap.org/data/2.5/find?units=metric&type=accurate&mode=json"
 
   def get_weather_for_all_cameras() do
@@ -42,7 +49,7 @@ defmodule Weather do
 
   defp map_record_to_day(record) do
     if record = List.first(record["list"]) do
-      %Weather.Location{
+      %Location{
         name: record["name"],
         temp: record["main"]["temp"],
         pressure: record["main"]["pressure"],
@@ -51,7 +58,6 @@ defmodule Weather do
         winddeg: record["wind"]["deg"]
       }
     end
-    |> Weather.Repo.insert()
+    |> Repo.insert()
   end
-
 end

@@ -8,12 +8,17 @@ defmodule Weather.Location do
     field :humidity, :integer
     field :windspeed, :decimal
     field :winddeg, :decimal
-    timestamps(type: :utc_datetime, default: DateTime.utc_now())
+
+    timestamps()
   end
 
   def changeset(location, params \\ %{}) do
     location
-    |> Ecto.Changeset.cast(params, [:temp, :pressure, :humidity, :windspeed, :winddeg])
+    |> Ecto.Changeset.cast(params, [:name, :temp, :pressure, :humidity, :windspeed, :winddeg])
     |> Weather.Repo.insert()
+  end
+
+  def fields() do
+    __MODULE__.__schema__(:fields)
   end
 end

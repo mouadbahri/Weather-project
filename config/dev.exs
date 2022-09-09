@@ -66,5 +66,5 @@ config :phoenix, :stacktrace_depth, 20
 # Initialize plugs at runtime for faster development compilation
 config :phoenix, :plug_init_mode, :runtime
 
-config :weather,
-  weather_api_id: "3973696edaa078dc71daa0d1ce0ddfb5"
+# config :weather,
+#   weather_api_id: "3973696edaa078dc71daa0d1ce0ddfb5"

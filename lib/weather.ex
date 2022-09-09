@@ -9,13 +9,7 @@ defmodule Weather do
 
   @weather_url "https://api.openweathermap.org/data/2.5/find?units=metric&type=accurate&mode=json"
 
-  def get_weather_for_all_cameras() do
-    # Get cameras
-    # call weather data for the camera
-    # filter nil values
-    # Save the data to the database
-  end
-
+  # This is the loop function that goes through the list of locations and applies the fetching function.
   def locations() do
     list = ["London", "Paris", "Dublin", "Oran"]
     list
@@ -24,8 +18,8 @@ defmodule Weather do
     end)
   end
 
+  # This function is the main fetching function.
   def weather_data(location) do
-    #Change location here add this to the fonction name (location) and change &q=London to &q=#{location}
     url = "#{get_weather_url()}&q=#{location}"
     request = Finch.build(:get, url)
 
@@ -42,11 +36,14 @@ defmodule Weather do
     end
   end
 
+  # This function prepares the url needed to fetch the data.
   defp get_weather_url() do
-    app_id = Application.get_env(:weather, :weather_api_id)
+    # This bit here is changed due to the hosting service not reading the id corretly from the congif file.
+    app_id = "3973696edaa078dc71daa0d1ce0ddfb5" #Application.get_env(:weather, :weather_api_id)
     "#{@weather_url}&APPID=#{app_id}"
   end
 
+  # This function recieves the Json data and stores it in our own database.
   defp map_record_to_day(record) do
     if record = List.first(record["list"]) do
       %Location{

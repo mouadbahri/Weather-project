@@ -21,7 +21,7 @@ config :weather, Oban,
   plugins: [
     {Oban.Plugins.Cron,
      crontab: [
-       {"0 * * * *", Weather.Workers.WeatherCaller}
+       {"0 * * * *", Weather.ObanWorkers.WeatherPoller}
      ]}
   ],
   queues: [default: 10]

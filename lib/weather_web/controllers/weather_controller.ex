@@ -1,4 +1,4 @@
-defmodule WeatherWeb.PageController do
+defmodule WeatherWeb.WeatherController do
   use WeatherWeb, :controller
 
   alias Weather.Repo
@@ -13,7 +13,7 @@ defmodule WeatherWeb.PageController do
   end
 
   # To call data by name call this function.
-  def get(conn, %{"name" => name}) do
+  def index(conn, %{"name" => name}) do
     capname = String.capitalize(name)
     query = from u in "Locations",
       where: u.name == ^capname,

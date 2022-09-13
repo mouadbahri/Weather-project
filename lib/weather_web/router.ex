@@ -17,8 +17,8 @@ defmodule WeatherWeb.Router do
   scope "/", WeatherWeb do
     pipe_through :browser
 
-    get("/", PageController, :get)
-    get("/all", PageController, :get_all)
+    get("/", WeatherController, :index)
+    get("/all", WeatherController, :get_all)
 
   end
 

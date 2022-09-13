@@ -1,9 +1,7 @@
 defmodule Weather do
+  import Ecto.Query
 
-  use Ecto.Schema
-
-  alias Weather.Repo
-  alias Weather.Location
+  alias Weather.{Location, Repo}
 
   @weather_url "https://api.openweathermap.org/data/2.5/find?units=metric&type=accurate&mode=json"
 
@@ -36,9 +34,29 @@ defmodule Weather do
     end
   end
 
+  def all(params \\ %{}) do
+    Location
+    |> filter(params)
+    |> Repo.all()
+  end
+
+  defp filter(query, params) do
+    Enum.reduce(params, query, fn
+      {"name", name}, acc ->
+        where(acc, [l], l.name == ^String.capitalize(name))
+
+      {"humidity", humidity}, acc ->
+        where(acc, [l], l.humidity == ^humidity)
+
+      _, acc ->
+        acc
+    end)
+  end
+
   defp get_weather_url() do
     # This bit here is changed due to the hosting service not reading the id corretly from the congif file.
-    app_id = "3973696edaa078dc71daa0d1ce0ddfb5" #Application.get_env(:weather, :weather_api_id)
+    # Application.get_env(:weather, :weather_api_id)
+    app_id = "3973696edaa078dc71daa0d1ce0ddfb5"
     "#{@weather_url}&APPID=#{app_id}"
   end
 

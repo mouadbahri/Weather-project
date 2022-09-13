@@ -18,8 +18,6 @@ defmodule WeatherWeb.Router do
     pipe_through :browser
 
     get("/", WeatherController, :index)
-    get("/all", WeatherController, :get_all)
-
   end
 
   # Other scopes may use custom stacks.

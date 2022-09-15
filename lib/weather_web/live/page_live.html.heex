@@ -1,0 +1,32 @@
+<table id="meteotable" class="display" width="100%">
+
+</table>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js" />
+<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js" />
+<script>
+function load_data()
+  {
+  $.get("/api", function(data, status)
+    {
+      console.log(data[0])
+      let t = $('#meteotable').DataTable
+        ({
+          data: data,
+          columns: 
+          [
+            {data:"name",title:"name"},
+            {data:"temp",title:"temp"},
+            {data:"humidity",title:"humidity"},
+            {data:"pressure",title:"pressure"},
+            {data:"windspeed",title:"windspeed"},
+            {data:"winddeg",title:"winddeg"},
+            {data:"updated_at",title:"updated_at"}
+          ]
+        });
+    });
+}
+$(document).ready(() => {
+  load_data();
+  });
+  
+</script>

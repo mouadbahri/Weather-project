@@ -1,5 +1,5 @@
-<main>
+<main role="main" class="container">
+  <p><%= live_flash(@flash, :notice) %></p>
+  <p><%= live_flash(@flash, :error) %></p>
   <%= @inner_content %>
 </main>
-
-

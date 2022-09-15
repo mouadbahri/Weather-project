@@ -50,6 +50,7 @@ defmodule Weather.MixProject do
       {:finch, "~> 0.12.0"},
       {:jason, "~> 1.3"},
       {:oban, "~> 2.13"},
+      {:phoenix_datatables, "~> 0.4.0"},
       {:tailwind, "~> 0.1.8"}
     ]
   end

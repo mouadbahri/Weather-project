@@ -13,7 +13,7 @@ To start your Phoenix server:
 
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
-For more help contact me at: mouadbahri2000@gmail.comm
+For more help contact me at: mouadbahri2000@gmail.com
 
 ## Learn more
 
